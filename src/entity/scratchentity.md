@@ -66,6 +66,8 @@ public IPacket<?> createSpawnPacket() {
 
 因为实体是在服务端创建以后再通知客户端创建，所以这里涉及到了发包操作，我们不能再这里复用Minecraft原版提供的方法，这里必须使用Forge提供的`NetworkHooks.getEntitySpawningPacket(this);`来在客户端创建实体。
 
+发包这一部分是必须要写的，否则实体仅在服务端生效，而在客户端不会渲染。
+
 接下去，就是和数据同步相关的内容。
 
 ```java
